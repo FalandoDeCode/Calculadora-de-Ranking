@@ -191,20 +191,3 @@ Digite o número de vitórias ou 'language' para selecionar o idioma: 105
 Digite o número de derrotas: 3
 Imparável! Seu Herói tem: 102 vitórias e está no nível Imortal}
 ```
-
----
-
-<a name="contribuição-pt"></a>
-## Contribuição
-
-Contribuições são o que tornam a comunidade de código aberto um lugar tão incrível para aprender, inspirar e criar. Qualquer contribuição que você fizer será **muito apreciada**.
-
-1. Faça um Fork do Projeto
-2. Crie sua Branch de Feature (`git checkout -b feature/AmazingFeature`)
-3. Faça o Commit de suas Mudanças (`git commit -m 'Adicione alguma Feature Incrível'`)
-4. Faça o Push para a Branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
----
-
-<a name="licença-pt"></a>
