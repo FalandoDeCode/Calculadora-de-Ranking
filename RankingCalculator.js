@@ -1,41 +1,59 @@
-// RankingCalculator.js version 1.0
-// Author: Matheus Rios (Falando deCode)
-// Date: 11/08/2025
-// Description: A simple ranking matches calculator
-// Type your victories and defeats to know your ranking class
-
-// import necessary libraries if needed
-
 const readlineSync = require('readline-sync');
+const translations = require('./translations.js');
 
-
-    
-function getRankingClass(victoriesBalance) {
+function getRankingClass(victoriesBalance, lang) {
+    let rank;
     if (victoriesBalance < 10) {
-        return { ranking: "Iron", message: "Keep trying!" };
+        rank = "Iron";
     } else if (victoriesBalance >= 10 && victoriesBalance <= 20) {
-        return { ranking: "Bronze", message: "Good job!" };
+        rank = "Bronze";
     } else if (victoriesBalance >= 21 && victoriesBalance <= 50) {
-        return { ranking: "Silver", message: "Well done!" };
+        rank = "Silver";
     } else if (victoriesBalance >= 51 && victoriesBalance <= 80) {
-        return { ranking: "Gold", message: "Keep it up!" };
+        rank = "Gold";
     } else if (victoriesBalance >= 81 && victoriesBalance <= 90) {
-        return { ranking: "Diamond", message: "You're on fire!" };
+        rank = "Diamond";
     } else if (victoriesBalance >= 91 && victoriesBalance <= 100) {
-        return { ranking: "Legendary", message: "You're a legend!" };
+        rank = "Legendary";
     } else if (victoriesBalance > 100) {
-        return { ranking: "Immortal", message: "Unstoppable!" };
+        rank = "Immortal";
     }
+
+    const message = translations[lang].rank_messages[rank];
+    return { ranking: rank, message: message };
 }
 
 function calculateRanking() {
-    const victories = parseInt(readlineSync.question("Enter the number of victories: "));
-    const defeats = parseInt(readlineSync.question("Enter the number of defeats: "));
+    let lang = 'en'; // Default language
+
+    // Initial prompt to allow language change
+    const initialInput = readlineSync.question("Enter victories or type 'language' to select language: ");
+
+    let victories;
+    if (initialInput.toLowerCase() === 'language') {
+        const selectedLang = readlineSync.question(translations.en.change_language_prompt).toLowerCase();
+        if (selectedLang === 'pt' || selectedLang === 'en') {
+            lang = selectedLang;
+            console.log(translations[lang].language_selected);
+        } else {
+            console.log("Invalid language selected, defaulting to English.");
+        }
+        victories = parseInt(readlineSync.question(translations[lang].prompt_victories));
+    } else {
+        victories = parseInt(initialInput);
+    }
+
+    const defeats = parseInt(readlineSync.question(translations[lang].prompt_defeats));
     const victoriesBalance = victories - defeats;
 
+    const result = getRankingClass(victoriesBalance, lang);
+    
+    let resultMessage = translations[lang].result_message;
+    resultMessage = resultMessage.replace('{message}', result.message);
+    resultMessage = resultMessage.replace('{victoriesBalance}', victoriesBalance);
+    resultMessage = resultMessage.replace('{ranking}', result.ranking);
 
-    const result = getRankingClass(victoriesBalance);
-    console.log(`${result.message} Your Hero have: ${victoriesBalance} victories and at the ${result.ranking} level.`);
+    console.log(resultMessage);
 }
 
 calculateRanking();
