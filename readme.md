@@ -92,26 +92,6 @@ Enter the number of defeats: 3
 Unstoppable! Your Hero have: 102 victories and at the Immortal level}
 ```
 
----
-
-## Contributing
-
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## License
-
-Distributed under the MIT License. See `LICENSE` file for more information.
-
----
-
 # Calculadora de Rank de Herói
 
 ![Linguagem](https://img.shields.io/badge/Linguagem-JavaScript-yellow?style=for-the-badge)
@@ -228,6 +208,3 @@ Contribuições são o que tornam a comunidade de código aberto um lugar tão i
 ---
 
 <a name="licença-pt"></a>
-## Licença
-
-Distribuído sob a Licença MIT. Veja o arquivo `LICENSE` para mais informações.
